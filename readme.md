@@ -24,8 +24,8 @@ generate__item($id_prod,$title,$img,$section,$descripcion)							// para las tie
 // PARA BACKEND UNICAMENTE O FORMULARIOS
 get_form_cp($array_inputs,$db_name,$url_name)										// ejemplo #1, es complicado explicar en una línea
 
-
-
+// FUNCIONES NUEVAS
+upload_file($file_name_tmp,$name)													// upload_file($_FILES["file"]["tmp_name"],$_FILES["file"]["name"]); #ejemplo
 
 
 
