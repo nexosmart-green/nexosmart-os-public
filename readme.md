@@ -26,7 +26,13 @@ get_form_cp($array_inputs,$db_name,$url_name)										// ejemplo #1, es complic
 
 // FUNCIONES NUEVAS
 upload_file($file_name_tmp,$name)													// upload_file($_FILES["file"]["tmp_name"],$_FILES["file"]["name"]); #ejemplo
+send_mail($to,$subject,$array_content,$html="")										// ejemplo #2, $to(string),$subject(string),$array_content(array[$url_logo,$url_login,$url_login_text,$title,$text,$text_support]),$html(string, opcional)
 
+
+// CLASES NUEVAS
+login
+	-> start_login()																// función sin terminar -desarrollandose-
+	-> encrypt_password($string)													// $string (requerida) -> devuelve string encriptada para pw
 
 
 
@@ -44,5 +50,22 @@ if(!empty($_POST)) $error = get_form_cp($array_inputs,$db_name,"/usuario/?sectio
 
 //$array_inputs tiene que contener: 'value'(string),'required'(int),'custom'(string). La imagen siempre tiene que ser 'img'
 //la img puede tenr un campo adicional: 'quality'
+
+########### --TERMINÉ EJEMPLO
+
+#2:
+//$array_content=[$url_logo,$url_login,$url_login_text,$title,$text,$text_support]
+
+[$url_logo,$url_login,$url_login_text,$title,$text,$text_support]
+$array_mail = [
+	"//www.site.com/img/logo.png",
+	"//www.site.com/ingresar",
+	"Para empezar a utilizar el sitio, presioná el siguiente botón",
+	"¡Bienvenido al <span>Sitio!</span>",
+	"acá un texto que va en el medio del body, cualquier cosa, o dejar vacío",
+	"Por cualquier inconveniente comunicate con<br/><span>soporte@tarjetealo.com</span>"
+]
+
+send_mail("mail@mail.com","hola mail!",$array_mail,$html="");
 
 ########### --TERMINÉ EJEMPLO
