@@ -25,7 +25,7 @@ generate__item($id_prod,$title,$img,$section,$descripcion)							// para las tie
 get_form_cp($array_inputs,$db_name,$url_name)										// ejemplo #1, es complicado explicar en una línea
 
 // FUNCIONES NUEVAS
-upload_file($file_name_tmp,$name)													// upload_file($_FILES["file"]["tmp_name"],$_FILES["file"]["name"]); #ejemplo
+upload_file($file_name_tmp,$name,$dir="")											// upload_file($_FILES["file"]["tmp_name"],$_FILES["file"]["name"]); #ejemplo, $dir por default es "/uploads/", parámetro opcional
 send_mail($to,$subject,$array_content,$html="")										// ejemplo #2, $to(string),$subject(string),$array_content(array[$url_logo,$url_login,$url_login_text,$title,$text,$text_support]),$html(string, opcional)
 
 
@@ -49,7 +49,11 @@ array('value'=>'img','required'=>1)
 if(!empty($_POST)) $error = get_form_cp($array_inputs,$db_name,"/usuario/?section=$_GET[section]&cat=$_GET[cat]");
 
 //$array_inputs tiene que contener: 'value'(string),'required'(int),'custom'(string). La imagen siempre tiene que ser 'img'
-//la img puede tenr un campo adicional: 'quality'
+//la img puede tenr campos adicionales que NO SON obligatorios: 'quality'("fhd","hd","nq","pq"), 'dir'(por ejemplo: "/directorio/a/subir/")
+//la variable "custom" hace referencia a un texto "custom" para presentar en el error, ejemplo: si el input "name" está vacío, y yo puse en el array "custom -> 'completa el nombre'", en el error aparecerá: completa el nombre.
+//la variable "type", si la dejas vacía por default te topa un input type=text, también tiene varios valores: text(textarea),number(input solo para nombre),file(subida de archivos, todos) 
+
+
 
 ########### --TERMINÉ EJEMPLO
 
