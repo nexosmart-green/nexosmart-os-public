@@ -19,6 +19,8 @@ secure_input($input)																// asegura cualquier input-textarea-select, 
 
 // LINEAS DE COMANDO PARA UTILIZAR EN LAS TIENDAS
 generate__item($id_prod,$title,$img,$section,$descripcion)							// para las tiendas online
+generate_mini_box($cols, $image, $price, $section, $id_producto, $title, $discount) // para tiendas online - vender producto con precio
+paginar_resultados_view()															// función para modificar visual del paginador
 
 
 // PARA BACKEND UNICAMENTE O FORMULARIOS
