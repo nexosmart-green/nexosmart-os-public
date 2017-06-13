@@ -53,7 +53,7 @@ if(!empty($_POST)) $error = get_form_cp($array_inputs,$db_name,"/usuario/?sectio
 //$array_inputs tiene que contener: 'value'(string),'required'(int),'custom'(string). La imagen siempre tiene que ser 'img'
 //la img puede tenr campos adicionales que NO SON obligatorios: 'quality'("fhd","hd","nq","pq"), 'dir'(por ejemplo: "/directorio/a/subir/")
 //la variable "custom" hace referencia a un texto "custom" para presentar en el error, ejemplo: si el input "name" está vacío, y yo puse en el array "custom -> 'completa el nombre'", en el error aparecerá: completa el nombre.
-//la variable "type", si la dejas vacía por default te topa un input type=text, también tiene varios valores: text(textarea),number(input solo para nombre),file(subida de archivos, todos) 
+//la variable "type", si la dejas vacía por default te topa un input type=text, también tiene varios valores: text(textarea),number(input solo para nombre),file(subida de archivos, todos),user_reg(solo para registrar usuarios, chequea que el username no esté ocupado),user_reg_email(campo obligatorio que tiene que seguirle a user_reg, es para chequear que el mail tampoco esté ocupado) 
 
 
 

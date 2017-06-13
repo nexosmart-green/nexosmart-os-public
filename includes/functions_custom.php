@@ -7,6 +7,10 @@
  * without erase in each update
  */
 
- 
- 
+//archivos CFG
+//$new_shop = new nexosmart(["id"=>xxxxxx,"mode"=>"production"]);
+$new_shop = new nexosmart(["id"=>1337,"mode"=>"testing"]);
+
+
+
 ?>
