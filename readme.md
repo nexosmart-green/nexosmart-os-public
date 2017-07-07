@@ -28,12 +28,12 @@ get_form_cp($array_inputs,$db_name,$url_name)										// ejemplo #1, es complic
 
 // FUNCIONES NUEVAS
 upload_file($file_name_tmp,$name,$dir="")											// upload_file($_FILES["file"]["tmp_name"],$_FILES["file"]["name"]); #ejemplo, $dir por default es "/uploads/", parámetro opcional
-send_mail($to,$subject,$array_content,$html="")										// ejemplo #2, $to(string),$subject(string),$array_content(array[$url_logo,$url_login,$url_login_text,$title,$text,$text_support]),$html(string, opcional)
+send_mail($to,$subject,$array_content,$html="")										// ejemplo #2, $to(string),$subject(string),$array_content=[$url_logo,$url_login,$url_login_text,$title,$text,$text_support,$text_login,$reply_to,$from_email,$background_header_color],$html(string, opcional)
 
 
 // CLASES NUEVAS
 login
-	-> start_login()																// función sin terminar -desarrollandose-
+	-> start_login($datos)															// función ya desarrollada $datos=['tabla','primer_campo_a_evaluar','segundo_dato_A_evaluar','idioma']
 	-> encrypt_password($string)													// $string (requerida) -> devuelve string encriptada para pw
 
 
@@ -50,17 +50,17 @@ array('value'=>'img','required'=>1)
 
 if(!empty($_POST)) $error = get_form_cp($array_inputs,$db_name,"/usuario/?section=$_GET[section]&cat=$_GET[cat]");
 
-//$array_inputs tiene que contener: 'value'(string),'required'(int),'custom'(string). La imagen siempre tiene que ser 'img'
-//la img puede tenr campos adicionales que NO SON obligatorios: 'quality'("fhd","hd","nq","pq"), 'dir'(por ejemplo: "/directorio/a/subir/")
+//$array_inputs tiene que contener: 'value'(string),'required'(int),'custom'(string), 'custom_db', 'multiple_uploads' (yes|no[default]). La subida de imágenes siempre tiene que ser name='img'
+//la img puede tenr campos adicionales que NO SON obligatorios: 'quality'("fhd"[default],"hd","nq","pq"), 'dir'(por ejemplo: "/directorio/a/subir/")[default:"/uploads/"]
 //la variable "custom" hace referencia a un texto "custom" para presentar en el error, ejemplo: si el input "name" está vacío, y yo puse en el array "custom -> 'completa el nombre'", en el error aparecerá: completa el nombre.
-//la variable "type", si la dejas vacía por default te topa un input type=text, también tiene varios valores: text(textarea),number(input solo para nombre),file(subida de archivos, todos),user_reg(solo para registrar usuarios, chequea que el username no esté ocupado),user_reg_email(campo obligatorio que tiene que seguirle a user_reg, es para chequear que el mail tampoco esté ocupado) 
+//la variable "type", si la dejas vacía por default te toma un input type=text, también tiene varios valores: text(textarea),unsecure(para meterle codigo html),number(input solo para números),file(subida de archivos, todos),user_reg(solo para registrar usuarios, chequea que el username no esté ocupado),user_reg_email(campo obligatorio que tiene que seguirle a user_reg, es para chequear que el mail tampoco esté ocupado) 
 
 
 
 ########### --TERMINÉ EJEMPLO
 
 #2:
-//$array_content=[$url_logo,$url_login,$url_login_text,$title,$text,$text_support]
+//$array_content=[$url_logo,$url_login,$url_login_text,$title,$text,$text_support,$text_login,$reply_to,$from_email,$background_header_color]
 
 [$url_logo,$url_login,$url_login_text,$title,$text,$text_support]
 $array_mail = [
