@@ -4,7 +4,7 @@ debug_errors() 																		// LISTA ERRORES - DEBUGGING
 redireccionar($pag)																	// REDIRECT A CUALQUIER NIVEL - $pag=string
 getUrl()																			// OBTIENE URL ACTUAL
 get_db_row($id,$nombre_campo,$tabla)												// Devuelve string de interés - $nombre_campo = campo de la tabla que se quiere obtener; $id = id de la fila del campo
-get_db_row($id,$nombre_campo,$tabla,$campo)											// Devuelve string de interés - $nombre_campo = campo de la tabla que se quiere obtener; $id = id de la fila del campo; $campo = campo por el cual se quiere buscar.
+get_db_row($id,$nombre_campo,$tabla,$campo)											// Devuelve string de interés - $nombre_campo = campo de la tabla que se quiere obtener; $id = ''; $campo = campo por el cual se quiere buscar.
 date_to_time($date)																	// tiene que tener la forma: Y-m-d H:i:s -> devuelve timestamp en secs
 upload_img($file_name_tmp,$name,$type,$calidad_px,$calidad,$direc,$extension,$sv)	// $sv="linux"|"windows"; $calidad=1-99(JPG)|1-5(PNG); $calidad_px=string(fhd-hd-nq-pq) donde fhd=fullHD(1920x1080); $type=string("temp"|"guardar")
 verificar($user, $pw, $rango)														// $user & $pw=$_SESSSION directamente. $rango=string (definido en la DB)
