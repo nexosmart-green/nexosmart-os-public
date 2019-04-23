@@ -1,8 +1,5 @@
-/*
-
-		NEXOSMART framework
-		===================
-	
+{
+	/*
 		debug 		-> 		debug_errors()
 		redirec 	-> 		redireccionar($url)
 		getu 		-> 		getUrl($url)
@@ -15,10 +12,14 @@
 		secure 		-> 		secure_input($input)
 		getrec 		-> 		get_records_db($table, $condition, $limit, $order, $field_order)
 		getcp 		-> 		get_form_cp($fields, $table, $redirect, $debug)
+		submitcp	->		get_form_cp (add)
+		editcp		->		get_form_cp (edit)
 		login 		-> 		${login} = new login; $login->start_login($params)
 		encpass 	-> 		$login->encrypt_password($password)
 		despass 	-> 		$login->decrypt_password($password)	
-	*/	
+	*/
+
+	// NEXOSMART.
 
 	"NexoSmart: debug_errors": {
 		"prefix": "debug",
@@ -117,11 +118,36 @@
 		"description": "NexoSmart: Guarda o edita un registro en la base de datos (más detalles en el ejemplo). Protege automaticamente los campos antes de insertalos, por lo tanto no hace falta ningún chequeo de inyección o tipo de datos previamente. $fields (array): se le debe pasar los nombres de los campos tal cual se encuentra en la tabla, y se obtiene su valor automaticamente de la variable $_POST | value (string): nombre del campo, tal cual esta en la base de datos | required (integer): 1 si se requiere que no sea vacio | custom (string): mensaje personalizado que aparecerá si no se cumple la condición de requerido | type (string): | text¨: valor por defecto, cuando el campo es texto/varchar/etc. | number¨: campos númericos | unsecure¨: para poder agregar un campo con etiquetas HTML o de peligró de inyección | user_reg¨: para chequear si un 'username' ya se encuentra en la base de datos | user_reg_email¨: para chequear si un 'email' ya se encuentra en la base de datos | $table (string): nombre de la tabla a guardar el registro | $redirect (string): url a redireccionar una vez guardado | $debug (boolean): si se le indica true devuelve los datos pasados en fields con su valor asignado y la consulta a cargar en la base de datos"
 	},	
 
+	
+	"NexoSmart: get_form_cp($fields, $table, $redirect, $debug) [add]": {
+		"prefix": "submitcp",
+		"body": [
+			"\\$_POST['submit'] = 'submit';",
+			"\\$fields = [",
+			"['value' => 'valor', 'required' => 1, 'type' => 'type', 'custom' => 'message custom']",
+			"];",
+			"get_form_cp(${1:fields}, ${2:table}, ${3:redirect}, ${4:debug});"			
+		],
+		"description": "NexoSmart: Guarda o edita un registro en la base de datos (más detalles en el ejemplo). Protege automaticamente los campos antes de insertalos, por lo tanto no hace falta ningún chequeo de inyección o tipo de datos previamente. $fields (array): se le debe pasar los nombres de los campos tal cual se encuentra en la tabla, y se obtiene su valor automaticamente de la variable $_POST | value (string): nombre del campo, tal cual esta en la base de datos | required (integer): 1 si se requiere que no sea vacio | custom (string): mensaje personalizado que aparecerá si no se cumple la condición de requerido | type (string): | text¨: valor por defecto, cuando el campo es texto/varchar/etc. | number¨: campos númericos | unsecure¨: para poder agregar un campo con etiquetas HTML o de peligró de inyección | user_reg¨: para chequear si un 'username' ya se encuentra en la base de datos | user_reg_email¨: para chequear si un 'email' ya se encuentra en la base de datos | $table (string): nombre de la tabla a guardar el registro | $redirect (string): url a redireccionar una vez guardado | $debug (boolean): si se le indica true devuelve los datos pasados en fields con su valor asignado y la consulta a cargar en la base de datos"
+	},
+
+	"NexoSmart: get_form_cp($fields, $table, $redirect, $debug) [edit]": {
+		"prefix": "editcp",
+		"body": [
+			"\\$_POST['submit_edit'] = 'submit_edit';",
+			"\\$fields = [",
+			"['value' => 'valor', 'required' => 1, 'type' => 'type', 'custom' => 'message custom']",
+			"];",
+			"get_form_cp(${1:fields}, ${2:table}, ${3:redirect}, ${4:debug});"			
+		],
+		"description": "NexoSmart: Guarda o edita un registro en la base de datos (más detalles en el ejemplo). Protege automaticamente los campos antes de insertalos, por lo tanto no hace falta ningún chequeo de inyección o tipo de datos previamente. $fields (array): se le debe pasar los nombres de los campos tal cual se encuentra en la tabla, y se obtiene su valor automaticamente de la variable $_POST | value (string): nombre del campo, tal cual esta en la base de datos | required (integer): 1 si se requiere que no sea vacio | custom (string): mensaje personalizado que aparecerá si no se cumple la condición de requerido | type (string): | text¨: valor por defecto, cuando el campo es texto/varchar/etc. | number¨: campos númericos | unsecure¨: para poder agregar un campo con etiquetas HTML o de peligró de inyección | user_reg¨: para chequear si un 'username' ya se encuentra en la base de datos | user_reg_email¨: para chequear si un 'email' ya se encuentra en la base de datos | $table (string): nombre de la tabla a guardar el registro | $redirect (string): url a redireccionar una vez guardado | $debug (boolean): si se le indica true devuelve los datos pasados en fields con su valor asignado y la consulta a cargar en la base de datos"
+	},
+
 	"NexoSmart: $login = new login": {
 		"prefix": "login",
 		"body": [
-			"${login:login} = new login;",
-			"${login:login}->start_login(${1:params})",
+			"\\$login = new login;",
+			"\\$login->start_login(${1:params})",
 
 		],
 		"description": "NexoSmart: Seteo del objeto para funciones de logueo | Inicio de sesión. Si el logueo es correcto, los campos de la base de datos pertenicientes al usuario se guardarán en la variable $_SESSION para ser utilizados."
@@ -130,7 +156,7 @@
 	"NexoSmart: $login->encrypt_password($password)": {
 		"prefix": "encpass",
 		"body": [
-			"$login->encrypt_password(${1:password})",			
+			"\\$login->encrypt_password(${1:password})",			
 		],
 		"description": "NexoSmart: Para encriptar contraseñas. Luego debe utilizarse la misma función del framework y el objecto login para desencriptar. $password (string): cadena de caracteres a pasar para encriptar."
 	},
@@ -138,7 +164,7 @@
 	"NexoSmart: $login->decrypt_password($password)": {
 		"prefix": "despass",
 		"body": [
-			"$login->decrypt_password($password)",			
+			"\\$login->decrypt_password($password)",			
 		],
 		"description": "NexoSmart: Para desencriptar contraseñas previamente encriptadas con el framework | $password (string): cadena de caracteres a pasar para desencriptar"
 	},
