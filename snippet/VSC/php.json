@@ -1,0 +1,147 @@
+/*
+
+		NEXOSMART framework
+		===================
+	
+		debug 		-> 		debug_errors()
+		redirec 	-> 		redireccionar($url)
+		getu 		-> 		getUrl($url)
+		dateto 		-> 		date_to_time($date)
+		upload 		-> 		upload_img($file_name_tmp, $name, $type, $quality_px, $quality, $dir, $ext, $server)
+		verifica 	-> 		verificar($user, $password, $range)
+		bb 			-> 		BBcode($text)
+		unbb 		-> 		unBBcode($text)
+		getdb 		-> 		get_db_row($id, $field_name, $table)
+		secure 		-> 		secure_input($input)
+		getrec 		-> 		get_records_db($table, $condition, $limit, $order, $field_order)
+		getcp 		-> 		get_form_cp($fields, $table, $redirect, $debug)
+		login 		-> 		${login} = new login; $login->start_login($params)
+		encpass 	-> 		$login->encrypt_password($password)
+		despass 	-> 		$login->decrypt_password($password)	
+	*/	
+
+	"NexoSmart: debug_errors": {
+		"prefix": "debug",
+		"body": [
+			"debug_errors();",
+			"$1"
+		],
+		"description": "NexoSmart: muestra errores en php."
+	},
+
+	"NexoSmart: redireccionar($url)": {
+		"prefix": "redirec",
+		"body": [
+			"redireccionar(${1:url});"			
+		],
+		"description": "NexoSmart: Redirecciona a donde se le indique."
+	},
+
+	"NexoSmart: get($url)": {
+		"prefix": "getu",
+		"body": [
+			"getUrl(${1:url});"			
+		],
+		"description": "NexoSmart: obtiene la url actual."
+	},
+
+	"NexoSmart: date_to_time($date)": {
+		"prefix": "dateto",
+		"body": [
+			"date_to_time(${1:date});"			
+		],
+		"description": "NexoSmart: Convierte fecha a Unix Timestamp, $date (date / string): formato 'Y-m-d H:i:s'"
+	},
+
+	"NexoSmart: upload_img($file_name_tmp, $name, $type, $quality_px, $quality, $dir, $ext, $server)": {
+		"prefix": "upload",
+		"body": [
+			"upload_img(${1:file_name_tmp}, ${2:name}, ${3:type}, ${4:quality_px}, ${5:quality}, ${6:dir}, ${7:ext}, ${0:server});"			
+		],
+		"description": "NexoSmart: Para subir imagen. $file_name_tmp (string): nombre del archivo temporal | $name (string): nombre del archivo | $type (string): tmp | guardar | $quality_px (string): fhd | hd | nq | pq | $calidad (string): 1 a 99 para JPG | 1 a 5 para PNG | $sv (string): linux | windows"
+	},
+
+	"NexoSmart: verificar($user, $password, $range)": {
+		"prefix": "verifica",
+		"body": [
+			"verificar(${1:user}, ${2:password}, ${0:range});"			
+		],
+		"description": "NexoSmart: Ayuda a verificar si un usuario tiene el rango solicitado. | $user (string): $_SESSION['id'] | $password (string): $_SESSION['password'] | $range (string): definido previamente en la tabla de la base de datos"
+	},
+
+	"NexoSmart: BBcode($text)": {
+		"prefix": "bb",
+		"body": [
+			"BBcode(${1:text});"			
+		],
+		"description": "NexoSmart: Generar código BB. $text (string): texto a convertir"
+	},
+
+	"NexoSmart: unBBcode($text)": {
+		"prefix": "unbb",
+		"body": [
+			"unBBcode(${1:text});"			
+		],
+		"description": "NexoSmart: Volver de BBcode a texto, $text (string): BBcode a revertir"
+	},
+
+	"NexoSmart: get_db_row($id, $field_name, $table)": {
+		"prefix": "getdb",
+		"body": [
+			"get_db_row(${1:id}, ${2:field_name}, ${0:table});"			
+		],
+		"description": "NexoSmart: Devuelve un campo de una única fila por ID. $id (integer): ID de la fila | $field_name (string): nombre del campo a traer | $table (string): tabla"
+	},
+
+	"NexoSmart: secure_input($input)": {
+		"prefix": "secure",
+		"body": [
+			"secure_input(${1:input});"			
+		],
+		"description": "NexoSmart: Asegura un campo, escapa caracteres y otras especificaciones. $input (string): campo a asegurar"
+	},
+
+	"NexoSmart: get_records_db($table, $condition, $limit, $order, $field_order)": {
+		"prefix": "getrec",
+		"body": [
+			"get_records_db(${1:table}, ${2:condition}, ${3:limit}, ${4:order}, ${0:field_order});"			
+		],
+		"description": "NexoSmart: Obtener registros. $table (string): nombre de la tabla en la base de datos | $condition (string): condiciones WHERE | $limit (integer): limites de registros a traer | $order (string): ASC | DESC | $field_order (string): campo por el cual se quiere ordenar la tabla"
+	},
+
+	"NexoSmart: get_form_cp($fields, $table, $redirect, $debug)": {
+		"prefix": "getcp",
+		"body": [
+			"get_form_cp(${1:fields}, ${2:table}, ${3:redirect}, ${4:debug});"			
+		],
+		"description": "NexoSmart: Guarda o edita un registro en la base de datos (más detalles en el ejemplo). Protege automaticamente los campos antes de insertalos, por lo tanto no hace falta ningún chequeo de inyección o tipo de datos previamente. $fields (array): se le debe pasar los nombres de los campos tal cual se encuentra en la tabla, y se obtiene su valor automaticamente de la variable $_POST | value (string): nombre del campo, tal cual esta en la base de datos | required (integer): 1 si se requiere que no sea vacio | custom (string): mensaje personalizado que aparecerá si no se cumple la condición de requerido | type (string): | text¨: valor por defecto, cuando el campo es texto/varchar/etc. | number¨: campos númericos | unsecure¨: para poder agregar un campo con etiquetas HTML o de peligró de inyección | user_reg¨: para chequear si un 'username' ya se encuentra en la base de datos | user_reg_email¨: para chequear si un 'email' ya se encuentra en la base de datos | $table (string): nombre de la tabla a guardar el registro | $redirect (string): url a redireccionar una vez guardado | $debug (boolean): si se le indica true devuelve los datos pasados en fields con su valor asignado y la consulta a cargar en la base de datos"
+	},	
+
+	"NexoSmart: $login = new login": {
+		"prefix": "login",
+		"body": [
+			"${login:login} = new login;",
+			"${login:login}->start_login(${1:params})",
+
+		],
+		"description": "NexoSmart: Seteo del objeto para funciones de logueo | Inicio de sesión. Si el logueo es correcto, los campos de la base de datos pertenicientes al usuario se guardarán en la variable $_SESSION para ser utilizados."
+	},
+
+	"NexoSmart: $login->encrypt_password($password)": {
+		"prefix": "encpass",
+		"body": [
+			"$login->encrypt_password(${1:password})",			
+		],
+		"description": "NexoSmart: Para encriptar contraseñas. Luego debe utilizarse la misma función del framework y el objecto login para desencriptar. $password (string): cadena de caracteres a pasar para encriptar."
+	},
+
+	"NexoSmart: $login->decrypt_password($password)": {
+		"prefix": "despass",
+		"body": [
+			"$login->decrypt_password($password)",			
+		],
+		"description": "NexoSmart: Para desencriptar contraseñas previamente encriptadas con el framework | $password (string): cadena de caracteres a pasar para desencriptar"
+	},
+	
+}
+
