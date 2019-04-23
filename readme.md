@@ -220,3 +220,24 @@ Para desencriptar contraseñas previamente encriptadas con el framework
 ## Ejemplos
 
 Los ejemplos se encuentran dentro de la carpeta 'examples', se deberá crear primera la base de datos `nexosmart-framework` y luego importar el archivo `.sql` que se encuentra dentro.
+
+
+---
+
+## Snippets para VSC
+
+		debug 		-> 		debug_errors()
+		redirec 	-> 		redireccionar($url)
+		getu 		-> 		getUrl($url)
+		dateto 		-> 		date_to_time($date)
+		upload 		-> 		upload_img($file_name_tmp, $name, $type, $quality_px, $quality, $dir, $ext, $server)
+		verifica 	-> 		verificar($user, $password, $range)
+		bb 			-> 		BBcode($text)
+		unbb 		-> 		unBBcode($text)
+		getdb 		-> 		get_db_row($id, $field_name, $table)
+		secure 		-> 		secure_input($input)
+		getrec 		-> 		get_records_db($table, $condition, $limit, $order, $field_order)
+		getcp 		-> 		get_form_cp($fields, $table, $redirect, $debug)
+		login 		-> 		${login} = new login; $login->start_login($params)
+		encpass 	-> 		$login->encrypt_password($password)
+		despass -> $login->decrypt_password($password) 
