@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[
+\$fields = [
+	["value" => "field_name"],
+];
+\$_POST['field_name'] = 'value';
+\$_POST['id'] = 'id';
+\$_POST['submit'] = 'submit_edit';
+
+get_form_cp(\$${1:fields}, '${2:table_name}', '${3:redirect}', ${4:false});
+]]></content>
+	<tabTrigger>get_form_cp</tabTrigger>
+	<scope>source.php</scope>
+	<description>edit - get_form_cp</description>
+</snippet>

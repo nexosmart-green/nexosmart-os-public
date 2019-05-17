@@ -18,11 +18,16 @@ ALTER TABLE `table_name` ADD `fModificacionUsuario` VARCHAR(50) NOT NULL AFTER `
 
 ---
 
+## Ejemplos
+
+Los ejemplos se encuentran dentro de la carpeta 'examples', se deberá crear primera la base de datos `nexosmart-framework` y luego importar el archivo `.sql` que se encuentra dentro.
+
+---
+
 ## Front-back
 `1. debug_errors()`
 
 Activa el logeo de errores en PHP
-
 
 `2. redireccionar($url)`
 
@@ -40,18 +45,7 @@ Convierte fecha a _Unix Timestamp_
 
 * **$date** _(date / string)_: formato 'Y-m-d H:i:s'
 
-`5. upload_img($file_name_tmp, $name, $type, $quality_px, $quality, $dir, $ext, $server)`
-
-Para subir imagen
-
-* **$file_name_tmp** _(string)_: nombre del archivo temporal
-* **$name** _(string)_: nombre del archivo
-* **$type** _(string)_: tmp | guardar
-* **$quality_px** _(string)_: fhd | hd | nq | pq
-* **$calidad** _(string)_: 1 a 99 para JPG | 1 a 5 para PNG
-* **$sv** _(string)_: linux | windows
-
-`6. verificar($user, $password, $range)`
+`5. verificar($user, $password, $range)`
 
 Ayuda a verificar si un usuario tiene el rango solicitado
 
@@ -59,36 +53,36 @@ Ayuda a verificar si un usuario tiene el rango solicitado
 * **$password** _(string)_: $_SESSION['password']
 * **$range** _(string)_: definido previamente en la tabla de la base de datos
 
-`7. BBcode($text)`
+`6. BBcode($text)`
 
 Generar código BB
 
 * **$text** _(string)_: texto a convertir
 
-`8. unBBcode($text)`
+`7. unBBcode($text)`
 
 Volver de BBcode a texto
 
 * **$text** _(string)_: BBcode a revertir
 
-`9. paginar_resultados($page)`
+`8. paginar_resultados($page)`
 
 Preguntar a Maxi :p
 
 ---
 
 ## Tiendas
-`10. generate_item($id_product, $title, $img, $section, $description)`
+`9. generate_item($id_product, $title, $img, $section, $description)`
 
-`11. generate_mini_box($cols, $image, $price, $section, $id_product, $title, $discount)`
+`10. generate_mini_box($cols, $image, $price, $section, $id_product, $title, $discount)`
 
-`12. paginar_resultados_view()`
+`11. paginar_resultados_view()`
 
 ---
 
 ## Bases de datos
 
-`13. get_db_row($id, $field_name, $table)`
+`12. get_db_row($id, $field_name, $table)`
 
 Devuelve un campo de una única fila por ID
 
@@ -96,13 +90,13 @@ Devuelve un campo de una única fila por ID
 * **$field_name** _(string)_: nombre del campo a traer
 * **$table** _(string)_: tabla
 
-`14. secure_input($input)`
+`13. secure_input($input)`
 
 Asegura un campo, escapa caracteres y otras especificaciones
 
 * **$input** _(string)_: campo a asegurar
 
-`15. get_records_db($table, $condition, $limit, $order, $field_order)`
+`14. get_records_db($table, $condition, $limit, $order, $field_order)`
 
 Obtener registros
 
@@ -112,7 +106,7 @@ Obtener registros
 * **$order** _(string)_: ASC | DESC
 * **$field_order** _(string)_: campo por el cual se quiere ordenar la tabla
 
-`16. get_form_cp($fields, $table, $redirect, $debug)`
+`15. get_form_cp($fields, $table, $redirect, $debug)`
 
 Guarda o edita un registro en la base de datos *(más detalles en el ejemplo)*. Protege automaticamente los campos antes de insertalos, por lo tanto no hace falta ningún chequeo de inyección o tipo de datos previamente.
 
@@ -189,11 +183,11 @@ Tambien poseemos una respuesta para errores, similiar a
 ---
 
 ## Login
-`17. $login = new login`
+`16. $login = new login`
 
 Seteo del objeto para funciones de logueo
 
-`18. $login->start_login($params)`
+`17. $login->start_login($params)`
 
 Inicio de sesión. Si el logueo es correcto, los campos de la base de datos pertenicientes al usuario se guardarán en la variable *$_SESSION* para ser utilizados.
 
@@ -203,43 +197,81 @@ Inicio de sesión. Si el logueo es correcto, los campos de la base de datos pert
 -- **Campo password** _(string)_: nombre del campo password para el usuario
 -- **Idioma** _(string)_: idioma
 
-`19. $login->encrypt_password($password)`
+`18. $login->encrypt_password($password)`
 
 Para encriptar contraseñas. Luego debe utilizarse la misma función del framework y el objecto *login* para desencriptar
 
 * **$password** _(string)_: cadena de caracteres a pasar para encriptar
 
-`20. $login->decrypt_password($password)`
+---
 
-Para desencriptar contraseñas previamente encriptadas con el framework
+## Archivos
+`19. upload_img($tmp_file_name, $tmp_name, $action, $quality_px, $quality, $dir, $type, $server)`
 
-* **$password** _(string)_: cadena de caracteres a pasar para desencriptar
+Para subir imagen rápidamente. Devuelve la ruta con el nombre de la imagen subida.
+
+* **$tmp_file_name** _(string)_: nombre del archivo temporal _(generalmente $_FILES[X]['tmp_name'])_
+* **$tmp_name** _(string)_: nombre del archivo _(generalmente $_FILES[X]['name'])_
+* **$action** _(string)_: tmp | guardar
+* **$quality_px** _(string)_: fhd | hd | nq | pq
+* **$quality** _(string)_: 1 a 99 para JPG | 1 a 5 para PNG
+* **$dir** _(string)_ : ruta donde se va a guardar la imagen. Tener en cuenta que por defecto es `__DIR__`
+* **$type** _(string)_ : png | jpg
+* **$server** _(string)_: linux | windows
+
+`20. upload_file($tmp_file_name, $tmp_name, $dir)`
+
+Para subir un archivo rápidamente. Devuelve la ruta con el nombre del archivo subido.
+
+* **$tmp_file_name** _(string)_: nombre del archivo temporal _(generalmente $_FILES[X]['tmp_name'])_
+* **$tmp_name** _(string)_: nombre del archivo _(generalmente $_FILES[X]['name'])_
+* **$dir** _(string)_ : ruta donde se va a guardar la imagen. Tener en cuenta que por defecto es `$base_url_web`, variable seteada comunmente en el `config.php` de nuestro proyecto.
 
 ---
 
-## Ejemplos
+## Snippets para VS Code
 
-Los ejemplos se encuentran dentro de la carpeta 'examples', se deberá crear primera la base de datos `nexosmart-framework` y luego importar el archivo `.sql` que se encuentra dentro.
-
+```
+debug 		-> 		debug_errors()
+redirec 	-> 		redireccionar($url)
+getu 		-> 		getUrl($url)
+dateto 		-> 		date_to_time($date)
+upload 		-> 		upload_img($file_name_tmp, $name, $type, $quality_px, $quality, $dir, $ext, $server)
+verifica 	-> 		verificar($user, $password, $range)
+bb 			-> 		BBcode($text)
+unbb 		-> 		unBBcode($text)
+getdb 		-> 		get_db_row($id, $field_name, $table)
+secure 		-> 		secure_input($input)
+getrec 		-> 		get_records_db($table, $condition, $limit, $order, $field_order)
+getcp 		-> 		get_form_cp($fields, $table, $redirect, $debug)
+submitcp	->		get_form_cp (add)
+editcp		->		get_form_cp (edit)
+login 		-> 		${login} = new login; $login->start_login($params)
+encpass 	-> 		$login->encrypt_password($password)
+despass 	-> 		$login->decrypt_password($password)
+```
 
 ---
 
-## Snippets para VSC
+## Snippets para Sublime Text 3
 
-		debug 		-> 		debug_errors()
-		redirec 	-> 		redireccionar($url)
-		getu 		-> 		getUrl($url)
-		dateto 		-> 		date_to_time($date)
-		upload 		-> 		upload_img($file_name_tmp, $name, $type, $quality_px, $quality, $dir, $ext, $server)
-		verifica 	-> 		verificar($user, $password, $range)
-		bb 			-> 		BBcode($text)
-		unbb 		-> 		unBBcode($text)
-		getdb 		-> 		get_db_row($id, $field_name, $table)
-		secure 		-> 		secure_input($input)
-		getrec 		-> 		get_records_db($table, $condition, $limit, $order, $field_order)
-		getcp 		-> 		get_form_cp($fields, $table, $redirect, $debug)
-		submitcp	->		get_form_cp (add)
-		editcp		->		get_form_cp (edit)
-		login 		-> 		${login} = new login; $login->start_login($params)
-		encpass 	-> 		$login->encrypt_password($password)
-		despass 	-> 		$login->decrypt_password($password)	
+Copiar los archivos `.sublime-snippet` y pegar en `C:\{Usuario}\Work\AppData\Roaming\Sublime Text 3\Packages\User`
+
+```
+date_to_time
+debug
+encrypt_password
+get_form_cp
+get_form_cp -> create example
+get_form_cp -> edit example
+get_form_cp -> custom edit example
+get_records_db
+get_db_row
+getUrl
+login
+login example
+redireccionar
+secure_input
+upload_file
+upload_img
+```

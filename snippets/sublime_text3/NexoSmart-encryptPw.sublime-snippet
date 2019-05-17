@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+\$${1:login_object}->encrypt_password('${2:string}');
+]]></content>
+	<tabTrigger>encrypt_password</tabTrigger>
+	<scope>source.php</scope>
+	<description>encrypt_password</description>
+</snippet>

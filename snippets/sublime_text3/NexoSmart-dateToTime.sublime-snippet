@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+date_to_time(${1:'Y-m-d H:i:s'});
+]]></content>
+	<tabTrigger>date_to_time</tabTrigger>
+	<scope>source.php</scope>
+	<description>date_to_time</description>
+</snippet>

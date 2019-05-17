@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+\$${1:login_object}->start_login(\$${2:params});
+]]></content>
+	<tabTrigger>login</tabTrigger>
+	<scope>source.php</scope>
+	<description>start login</description>
+</snippet>

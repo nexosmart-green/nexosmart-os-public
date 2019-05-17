@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[
+\$params = [
+	"${1:table_users}",
+	"${2:username|email name field}",
+	"${3:password name field}",
+	"es_US",
+];
+
+\$login = new login;
+\$login->start_login(\$params});
+]]></content>
+	<tabTrigger>login</tabTrigger>
+	<scope>source.php</scope>
+	<description>login example</description>
+</snippet>

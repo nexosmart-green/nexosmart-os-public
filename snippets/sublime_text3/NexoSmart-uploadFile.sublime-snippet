@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+upload_file(${1:\$_FILES['${2:file_name}']['tmp_name']}, ${3:\$_FILES['${4:file_name}']['name']}, '${5:dir}');
+]]></content>
+	<tabTrigger>upload_file</tabTrigger>
+	<scope>source.php</scope>
+	<description>upload_file</description>
+</snippet>

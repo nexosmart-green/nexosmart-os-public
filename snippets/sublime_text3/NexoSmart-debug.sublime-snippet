@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+debug_errors();
+]]></content>
+	<tabTrigger>debug_errors</tabTrigger>
+	<scope>source.php</scope>
+	<description>debug_errors</description>
+</snippet>

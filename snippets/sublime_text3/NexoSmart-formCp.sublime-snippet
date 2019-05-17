@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+get_form_cp(\$${1:fields}, '${2:table_name}', '${3:redirect}', ${4:false});
+]]></content>
+	<tabTrigger>get_form_cp</tabTrigger>
+	<scope>source.php</scope>
+	<description>get_form_cp</description>
+</snippet>

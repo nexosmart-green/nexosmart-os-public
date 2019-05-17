@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+redireccionar('${1:dir}');
+]]></content>
+	<tabTrigger>redireccionar</tabTrigger>
+	<scope>source.php</scope>
+	<description>redireccionar</description>
+</snippet>

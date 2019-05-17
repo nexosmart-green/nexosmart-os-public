@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+get_db_row(${1:'id'}, '${2:field_name}', '${3:table_name}');
+]]></content>
+	<tabTrigger>get_db_row</tabTrigger>
+	<scope>source.php</scope>
+	<description>get_db_row</description>
+</snippet>

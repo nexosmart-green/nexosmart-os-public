@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+get_records_db('${1:table_name}', ${2:'where'}, '${3:limit}', '${4:ASC|DESC}', '${5:order_by}');
+]]></content>
+	<tabTrigger>get_records_db</tabTrigger>
+	<scope>source.php</scope>
+	<description>get_records_db</description>
+</snippet>

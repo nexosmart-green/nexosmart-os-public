@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+upload_img(${1:\$_FILES['${2:img_name}']['tmp_name']}, ${3:\$_FILES['${4:img_name}']['name']}, '${5:tmp|guardar}', ${6:\$quality_px}, ${7:\$quality_px}, '${8:dir}', '${9:jpg|png}', '${10:windows|linux}');
+]]></content>
+	<tabTrigger>upload_img</tabTrigger>
+	<scope>source.php</scope>
+	<description>upload_img</description>
+</snippet>
